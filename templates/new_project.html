@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-card">
+    <h2>Create Project</h2>
+    <form method="post">
+        <input type="text" name="name" placeholder="Project Name" required>
+        <textarea name="description" placeholder="Description"></textarea>
+        <button type="submit" class="btn-primary">Create</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Create Project{% endblock %}
+
+{% block content %}
+
+<h2 class="text-3xl font-bold mb-8">Create New Project</h2>
+
+<div class="card p-8 max-w-xl">
+    <form method="post" class="space-y-6">
+
+        <div>
+            <label class="text-sm text-slate-400">Project Name</label>
+            <input type="text" name="name" class="input-modern mt-2" required>
+        </div>
+
+        <div>
+            <label class="text-sm text-slate-400">Description</label>
+            <textarea name="description" rows="4"
+                class="input-modern mt-2" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary w-full">
+            Create Project
+        </button>
+
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<h2 class="text-5xl text-red-500 mb-3">
+    Operation Command
+</h2>
+<p class="text-gray-400">
+    Monitor missions. Assign roles. Control the chaos.
+</p>
+
+<div class="grid md:grid-cols-3 gap-8 mb-12">
+
+    <div class="card p-6 flex justify-between items-center">
+        <div>
+            <p class="text-slate-400 text-sm">Projects</p>
+            <h3 class="text-3xl font-semibold mt-2">{{ projects|length }}</h3>
+        </div>
+        <i data-lucide="folder" class="text-indigo-400"></i>
+    </div>
+
+    <div class="card p-6 flex justify-between items-center">
+        <div>
+            <p class="text-slate-400 text-sm">Tasks</p>
+            <h3 class="text-3xl font-semibold mt-2">{{ tasks|length }}</h3>
+        </div>
+        <i data-lucide="check-square" class="text-pink-400"></i>
+    </div>
+
+    <div class="card p-6 flex justify-between items-center">
+        <div>
+            <p class="text-slate-400 text-sm">Completed</p>
+            <h3 class="text-3xl font-semibold mt-2">
+                {{ tasks|selectattr("status","equalto","Done")|list|length }}
+            </h3>
+        </div>
+        <i data-lucide="activity" class="text-green-400"></i>
+    </div>
+
+</div>
+
+<div class="flex justify-between items-center mb-6">
+    <h3 class="text-2xl font-semibold">Projects</h3>
+    <a href="/projects/new" class="btn-primary">+ New Project</a>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for project in projects %}
+    <div class="card p-6">
+        <h4 class="text-lg font-semibold mb-2">{{ project.name }}</h4>
+        <p class="text-slate-400 text-sm mb-4">
+            {{ project.description }}
+        </p>
+        <a href="/projects/{{ project.id }}" class="text-indigo-400 text-sm font-medium">
+            Open →
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
